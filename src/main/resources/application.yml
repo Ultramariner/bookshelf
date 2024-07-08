@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: bookshelf
   datasource:
     username: postgres
     password: postgres
