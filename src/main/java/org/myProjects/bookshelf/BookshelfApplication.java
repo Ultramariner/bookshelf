@@ -1,4 +1,4 @@
-package org.myprojects.bookshelf;
+package org.myProjects.bookshelf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
