@@ -8,5 +8,5 @@ spring:
     name: bookshelf
   mvc:
     view:
-      prefix: /WEB-INF/jsp/
+      prefix: /jsp/
       suffix: .jsp
