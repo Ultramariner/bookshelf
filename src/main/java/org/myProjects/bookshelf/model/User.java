@@ -15,10 +15,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int pid;
-    private char name;
-    private char login;
-    private char password;
+    private int id;
+    private String name;
+    @Column(unique = true)
+    private String login;
+    private String password;
     private Date last_login_date;
 
 }

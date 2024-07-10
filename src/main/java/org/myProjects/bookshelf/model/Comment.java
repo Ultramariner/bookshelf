@@ -5,25 +5,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+
 import java.util.Date;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "books")
-public class Book {
+@Table(name = "comments")
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(unique = true)
-    private String short_name;
-    private String name;
-    @ManyToMany
-    private List<Genre> genres;
-    private String source;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    private String comment;
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
     private Date create_date;
