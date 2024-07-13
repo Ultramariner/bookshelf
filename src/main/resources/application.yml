@@ -4,10 +4,6 @@ spring:
     password: postgres
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/bookshelf
-  mvc:
-    view:
-      prefix: /jsp/
-      suffix: .jsp
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none

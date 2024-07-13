@@ -1,4 +1,4 @@
-package org.myProjects.bookshelf;
+package org.myProjects.bookshelf.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ public class MainController {
     @GetMapping()
     public String get() {
         System.out.println("---GET---");
-            return "main";
+            return "main.html";
     }
 
 }

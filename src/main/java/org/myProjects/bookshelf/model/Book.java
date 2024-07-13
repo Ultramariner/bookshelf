@@ -17,11 +17,12 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column(unique = true)
     private String short_name;
     private String name;
-    @ManyToMany
+    //Refactor EAGER -> @Transactional (lazyInitializationException)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Genre> genres;
     private String source;
     @Temporal(TemporalType.DATE)

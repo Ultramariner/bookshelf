@@ -1,0 +1,10 @@
+package org.myProjects.bookshelf.repository;
+
+import org.myProjects.bookshelf.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+
+    User getByLogin (String login);
+
+}

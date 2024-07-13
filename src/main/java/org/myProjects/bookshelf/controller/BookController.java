@@ -1,17 +1,17 @@
-package org.myProjects.bookshelf;
+package org.myProjects.bookshelf.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path = "/profile")
-public class ProfileController {
+@RequestMapping(path = "/book")
+public class BookController {
 
     @GetMapping()
     public String get() {
         System.out.println("---GET---");
-        return "profile";
+        return "book.html";
     }
 
 }
