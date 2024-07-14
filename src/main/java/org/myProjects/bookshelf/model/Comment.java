@@ -1,14 +1,16 @@
 package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "comments")
 public class Comment {
@@ -28,4 +30,12 @@ public class Comment {
     @CreationTimestamp
     private Date createDate;
 
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", comment='" + comment + '\'' +
+                ", createDate=" + createDate +
+                '}';
+    }
 }

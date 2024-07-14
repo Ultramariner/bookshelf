@@ -1,14 +1,16 @@
 package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "books")
 public class Book {
@@ -19,8 +21,6 @@ public class Book {
     @Column(name = "short_name", unique = true)
     private String shortName;
     private String name;
-    //Refactor EAGER -> @Transactional (lazyInitializationException)
-    //@ManyToMany(fetch = FetchType.EAGER)
     @ManyToMany
     @JoinTable(name = "books_genres",
         joinColumns = { @JoinColumn(name = "book_id") },
@@ -32,4 +32,14 @@ public class Book {
     @CreationTimestamp
     private Date createDate;
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", shortName='" + shortName + '\'' +
+                ", name='" + name + '\'' +
+                ", source='" + source + '\'' +
+                ", createDate=" + createDate +
+                '}';
+    }
 }

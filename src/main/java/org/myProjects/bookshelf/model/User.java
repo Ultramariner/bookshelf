@@ -1,12 +1,15 @@
 package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "users")
 public class User {
@@ -21,4 +24,14 @@ public class User {
     @Column(name = "last_login_date")
     private Date lastLoginDate;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", lastLoginDate=" + lastLoginDate +
+                '}';
+    }
 }

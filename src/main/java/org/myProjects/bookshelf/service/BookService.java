@@ -3,7 +3,6 @@ package org.myProjects.bookshelf.service;
 import jakarta.transaction.Transactional;
 import org.myProjects.bookshelf.model.Book;
 import org.myProjects.bookshelf.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @Transactional
 public class BookService {
 
-    @Autowired
-    private BookRepository repository;
+    private final BookRepository repository;
+
+    public BookService (BookRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Book> findByGenre(String genre) {
         return repository.findByGenreName(genre);

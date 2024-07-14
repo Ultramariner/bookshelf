@@ -1,11 +1,13 @@
 package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "libraries")
 public class Library {
@@ -14,4 +16,11 @@ public class Library {
     private LibraryLink libraryLink;
     private int status;
 
+    @Override
+    public String toString() {
+        return "Library{" +
+                "libraryLink=" + libraryLink +
+                ", status=" + status +
+                '}';
+    }
 }
