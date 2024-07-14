@@ -32,6 +32,8 @@ public class Book {
     @CreationTimestamp
     private Date createDate;
     private Long rating;
+    private String description;
+    private String author;
 
     @Override
     public String toString() {
@@ -42,6 +44,8 @@ public class Book {
                 ", source='" + source + '\'' +
                 ", createDate=" + createDate +
                 ", rating=" + rating +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
                 '}';
     }
 }
