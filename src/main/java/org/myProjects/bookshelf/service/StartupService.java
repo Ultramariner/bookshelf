@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class StartupService {
 
-//    private final UserService userService;
-//    private final BookService bookService;
-//
-//    @PostConstruct
-//    public void init() {
-//        userService.getUserByLogin("user1");
-//        bookService.getBooksByName("oo");
-//        bookService.getBooksByGenre("genre1");
-//    }
+    private final UserService userService;
+    private final BookService bookService;
+
+    @PostConstruct
+    public void init() {
+        userService.findUserByLogin("user1");
+        bookService.findByName("oo");
+        bookService.findByGenre("genre1");
+    }
 }

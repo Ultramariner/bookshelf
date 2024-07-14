@@ -2,11 +2,9 @@ package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -20,6 +18,7 @@ public class User {
     @Column(unique = true)
     private String login;
     private String password;
-    private Date last_login_date;
+    @Column(name = "last_login_date")
+    private Date lastLoginDate;
 
 }

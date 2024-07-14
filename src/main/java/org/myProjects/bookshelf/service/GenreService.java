@@ -15,7 +15,7 @@ public class GenreService {
     @Autowired
     private GenreRepository repository;
 
-    public List<Genre> getAll ()  {
+    public List<Genre> findAll ()  {
         return repository.findAll();
     }
 

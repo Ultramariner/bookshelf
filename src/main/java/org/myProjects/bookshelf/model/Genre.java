@@ -2,10 +2,10 @@ package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -17,5 +17,7 @@ public class Genre {
     private Integer id;
     @Column(unique = true)
     private String name;
+    @ManyToMany(mappedBy = "genres")
+    private List<Book> books;
 
 }

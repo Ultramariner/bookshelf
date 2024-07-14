@@ -15,12 +15,14 @@ public class BookService {
     @Autowired
     private BookRepository repository;
 
-    public List<Book> getBooksByGenre(String genre) {
-        return repository.findByGenres_Name(genre);
+    public List<Book> findByGenre(String genre) {
+        return repository.findByGenreName(genre);
     }
 
-    public List<Book> getBooksByName(String name) {
+    public List<Book> findByName(String name) {
         return repository.findByNameContains(name);
     }
+
+    public List<Book> findAll() {return repository.findAll();}
 
 }

@@ -13,8 +13,8 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public User getUserByLogin (String login) {
-        return repository.getByLogin(login);
+    public User findUserByLogin (String login) {
+        return repository.findByLogin(login);
     }
 
 }

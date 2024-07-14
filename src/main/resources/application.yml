@@ -6,4 +6,4 @@ spring:
     url: jdbc:postgresql://localhost:5432/bookshelf
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop

@@ -2,13 +2,11 @@ package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import java.util.Date;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -18,15 +16,20 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true)
-    private String short_name;
+    @Column(name = "short_name", unique = true)
+    private String shortName;
     private String name;
     //Refactor EAGER -> @Transactional (lazyInitializationException)
-    @ManyToMany(fetch = FetchType.EAGER)
+    //@ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(name = "books_genres",
+        joinColumns = { @JoinColumn(name = "book_id") },
+        inverseJoinColumns = { @JoinColumn(name = "genres_id")})
     private List<Genre> genres;
     private String source;
+    @Column(name = "create_date")
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
-    private Date create_date;
+    private Date createDate;
 
 }

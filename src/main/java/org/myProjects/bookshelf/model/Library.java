@@ -2,10 +2,8 @@ package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -13,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Library {
 
     @EmbeddedId
-    private LibraryId libraryId;
+    private LibraryLink libraryLink;
     private int status;
 
 }

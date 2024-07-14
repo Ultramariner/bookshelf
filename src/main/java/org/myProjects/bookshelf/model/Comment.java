@@ -2,13 +2,11 @@ package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -25,8 +23,9 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
     private String comment;
+    @Column(name = "create_date")
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
-    private Date create_date;
+    private Date createDate;
 
 }
