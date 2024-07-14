@@ -22,7 +22,8 @@ public class MainController {
     @GetMapping
     public ModelAndView get() {
         ModelAndView modelAndView = new ModelAndView("main.html");
-        modelAndView.addObject("books", bookService.findAll());
+        modelAndView.addObject("topBooks", bookService.findTop5ByRating());
+        modelAndView.addObject("newBooks", bookService.findTop5ByCreateDate());
         modelAndView.addObject("genres", genreService.findAll());
         return modelAndView;
     }

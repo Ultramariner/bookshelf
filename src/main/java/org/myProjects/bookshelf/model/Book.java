@@ -31,6 +31,7 @@ public class Book {
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
     private Date createDate;
+    private Long rating;
 
     @Override
     public String toString() {
@@ -40,6 +41,7 @@ public class Book {
                 ", name='" + name + '\'' +
                 ", source='" + source + '\'' +
                 ", createDate=" + createDate +
+                ", rating=" + rating +
                 '}';
     }
 }

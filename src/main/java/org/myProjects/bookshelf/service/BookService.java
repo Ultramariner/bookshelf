@@ -27,4 +27,8 @@ public class BookService {
 
     public List<Book> findAll() {return repository.findAll();}
 
+    public List<Book> findTop5ByRating() { return repository.findTop5ByOrderByRatingDesc();}
+
+    public List<Book> findTop5ByCreateDate() { return repository.findTop5ByOrderByCreateDateDesc();}
+
 }

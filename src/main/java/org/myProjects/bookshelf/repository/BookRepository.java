@@ -14,4 +14,8 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     List<Book> findByNameContains(String name);
 
+    List<Book> findTop5ByOrderByRatingDesc();
+
+    List<Book> findTop5ByOrderByCreateDateDesc();
+
 }

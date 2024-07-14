@@ -55,23 +55,36 @@
         </div>
     </div>
 
-<!--    <tr th:each="genre: ${genres}">-->
-<!--        <div class="panel panel-default">-->
-<!--            <div class="panel-heading" th:text="${genre}"></div>-->
-<!--            <div class="panel-body">-->
-<!--                <div class="card-group">-->
-<!--                    <td th:each="book,rowStat : ${books.?[getGenres.contains('genre1')]}">-->
-<!--                        <div class="card">-->
-<!--                            <img src="..." class="card-img-top" alt="...">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 th:text="${book.getName}"></h5>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </td>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </tr>-->
+    <div class="panel panel-default">
+        <div class="panel-heading">Лучшие</div>
+        <div class="panel-body">
+            <div class="card-group">
+                <td th:each="topBook: ${topBooks}">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 th:text="${topBook.getName}"></h5>
+                        </div>
+                    </div>
+                </td>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Новые</div>
+        <div class="panel-body">
+            <div class="card-group">
+                <td th:each="newBook: ${newBooks}">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 th:text="${newBook.getName}"></h5>
+                        </div>
+                    </div>
+                </td>
+            </div>
+        </div>
+    </div>
 
 </div>
 
