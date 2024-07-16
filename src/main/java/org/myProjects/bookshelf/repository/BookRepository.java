@@ -18,4 +18,9 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     List<Book> findTop5ByOrderByCreateDateDesc();
 
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH Library l ON b.id = l.libraryLink.book.id LEFT JOIN FETCH User u ON l.libraryLink.user.id = u.id WHERE u.login = :userName")
+    List<Book> findByUser(@Param("userName") String userName);
+
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH Library l ON b.id = l.libraryLink.book.id LEFT JOIN FETCH User u ON l.libraryLink.user.id = u.id WHERE u.login = :userName AND l.status.name = :status")
+    List<Book> findByUserAndStatus(@Param("userName") String userName, @Param("status") String status);
 }

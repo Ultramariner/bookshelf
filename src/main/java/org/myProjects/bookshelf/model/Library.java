@@ -14,13 +14,14 @@ public class Library {
 
     @EmbeddedId
     private LibraryLink libraryLink;
-    private int status;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private Status status;
 
     @Override
     public String toString() {
         return "Library{" +
                 "libraryLink=" + libraryLink +
-                ", status=" + status +
                 '}';
     }
 }

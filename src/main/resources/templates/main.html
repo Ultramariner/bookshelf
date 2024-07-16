@@ -59,7 +59,7 @@
         <div class="panel-body">
             <div class="card-group">
                 <td th:each="topBook: ${topBooks}">
-                    <div class="card">
+                    <div class="card text-center">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 th:text="${topBook.getName}"></h5>
@@ -75,7 +75,7 @@
         <div class="panel-body">
             <div class="card-group">
                 <td th:each="newBook: ${newBooks}">
-                    <div class="card">
+                    <div class="card text-center">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 th:text="${newBook.getName}"></h5>

@@ -25,6 +25,14 @@ public class BookService {
         return repository.findByNameContains(name);
     }
 
+    public List<Book> findByUser(String user) {
+        return repository.findByUser(user);
+    }
+
+    public List<Book> findByUserAndStatus(String user, String status) {
+        return repository.findByUserAndStatus(user, status);
+    }
+
     public List<Book> findAll() {return repository.findAll();}
 
     public List<Book> findTop5ByRating() { return repository.findTop5ByOrderByRatingDesc();}

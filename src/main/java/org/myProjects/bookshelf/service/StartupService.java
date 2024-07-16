@@ -11,10 +11,10 @@ public class StartupService {
     private final UserService userService;
     private final BookService bookService;
 
-    @PostConstruct
-    public void init() {
-        userService.findUserByLogin("user1");
-        bookService.findByName("oo");
-        bookService.findByGenre("genre1");
-    }
+//    @PostConstruct
+//    public void init() {
+//        userService.findUserByLogin("user1");
+//        bookService.findByName("oo");
+//        bookService.findByGenre("genre1");
+//    }
 }
