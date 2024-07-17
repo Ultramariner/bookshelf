@@ -2,13 +2,13 @@ package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
-@Data
 @Embeddable
-public class LibraryId implements Serializable {
+@EqualsAndHashCode
+public class LibraryLink implements Serializable {
 
     @ManyToOne
     private User user;

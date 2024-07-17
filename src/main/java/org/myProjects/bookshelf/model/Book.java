@@ -1,31 +1,55 @@
 package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.util.Date;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "books")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(unique = true)
-    private String short_name;
+    private Integer id;
+    @Column(name = "short_name", unique = true)
+    private String shortName;
     private String name;
     @ManyToMany
+    @JoinTable(name = "books_genres",
+        joinColumns = { @JoinColumn(name = "book_id") },
+        inverseJoinColumns = { @JoinColumn(name = "genres_id")})
     private List<Genre> genres;
     private String source;
+    @Column(name = "create_date")
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
-    private Date create_date;
+    private Date createDate;
+    private Long rating;
+    private String description;
+    private String author;
 
+    public String getGenresString() {
+        return genres.toString().replace("[","").replace("]","");
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", shortName='" + shortName + '\'' +
+                ", name='" + name + '\'' +
+                ", source='" + source + '\'' +
+                ", createDate=" + createDate +
+                ", rating=" + rating +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                '}';
+    }
 }

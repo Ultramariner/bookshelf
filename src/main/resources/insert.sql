@@ -1,0 +1,8 @@
+insert into genres (name) values ('genre1'),('genre2'),('genre3');
+insert into statuses (name) values ('Читаю'),('Прочту позже'),('Прочитано');
+insert into books (name, short_name, rating, create_date, author, description) values ('book1', 'book1', 10, '01.01.2005', 'author1', 'description1'),('book2', 'book2', 20, '01.01.2004', 'author2', 'description2'),('book3', 'book3', 30, '01.01.2003', 'author3', 'description3'),('book4', 'book4', 40, '01.01.2002', 'author4', 'description4'),('book5', 'book5', 50, '01.01.2001', 'author5', 'description5');
+insert into books_genres (book_id, genres_id) VALUES (1,1),(1,2),(2,2),(2,3),(3,3),(3,1),(4,2),(5,3);
+insert into users (login, name, password) values ('login1','user1','password1'),('login2','user2','password2'),('login3','user3','password3');
+insert into libraries (book_id, status_id, user_id) values (1,1,1),(2,2,1),(3,3,1),(2,1,2),(3,1,3);
+
+select * from books b1_0 join libraries l1_0 on b1_0.id=l1_0.book_id join users u1_0 on l1_0.user_id=u1_0.id join statuses s1_0 on s1_0.id=l1_0.status_id where login='login1' and s1_0.name='Читаю';

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-md">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://localhost:8080/main">Bookshelf</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Книги
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../search?category=best">Лучшие</a></li>
+                            <li><a class="dropdown-item" href="../search?category=new">Новинки</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <td th:each="genre: ${genres}">
+                                <li><a class="dropdown-item" th:href="@{../search(category='genre',value=${genre.getId})}" th:text="${genre.getName}"></a></li>
+                            </td>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8080/profile/user1/library">Моя библиотека</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8080/profile/user1">Профиль</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Название" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Поиск</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Жанры</div>
+        <div class="panel-body">
+            <td th:each="genre: ${genres}">
+                <button type="button" class="btn btn-light">
+                    <a th:href="@{../search(category='genre',value=${genre.getId})}" th:text="${genre.getName}"></a>
+                </button>
+            </td>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Лучшие</div>
+        <div class="panel-body">
+            <div class="card-group">
+                <td th:each="topBook: ${topBooks}">
+                    <div class="card text-center">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5>
+                                <a th:href="@{../book/{book}(book=${topBook.getShortName})}" th:text="${topBook.getName}"></a>
+                            </h5>
+                        </div>
+                    </div>
+                </td>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Новинки</div>
+        <div class="panel-body">
+            <div class="card-group">
+                <td th:each="newBook: ${newBooks}">
+                    <div class="card text-center">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5>
+                                <a th:href="@{../book/{book}(book=${newBook.getShortName})}" th:text="${newBook.getName}"></a>
+                            </h5>
+                        </div>
+                    </div>
+                </td>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,23 +1,23 @@
 package org.myProjects.bookshelf.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "comments")
 public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
@@ -25,8 +25,17 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
     private String comment;
+    @Column(name = "create_date")
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
-    private Date create_date;
+    private Date createDate;
 
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", comment='" + comment + '\'' +
+                ", createDate=" + createDate +
+                '}';
+    }
 }
