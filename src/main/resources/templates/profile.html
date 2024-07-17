@@ -11,30 +11,30 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Bookshelf</a>
+            <a class="navbar-brand" href="http://localhost:8080/main">Bookshelf</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Книги
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Лучшие</a></li>
-                            <li><a class="dropdown-item" href="#">Новинки</a></li>
+                            <li><a class="dropdown-item" href="../../search?category=best">Лучшие</a></li>
+                            <li><a class="dropdown-item" href="../../search?category=new">Новинки</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <td th:each="genre: ${genres}">
-                                <li><a class="dropdown-item" href="#" th:text="${genre.getName}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{../../search(category='genre',value=${genre.getId})}" th:text="${genre.getName}"></a></li>
                             </td>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Моя библиотека</a>
+                        <a class="nav-link" href="http://localhost:8080/profile/user1/library">Моя библиотека</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Профиль</a>
+                        <a class="nav-link" href="http://localhost:8080/profile/user1">Профиль</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -56,15 +56,21 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="inputName1" class="col-sm-2 col-form-label">Никнейм</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputName1" th:value="${user.getName}">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="inputLogin2" class="col-sm-2 col-form-label">Логин</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputLogin2" placeholder="Логин">
+                        <input type="text" class="form-control" id="inputLogin2" th:value="${user.getLogin}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Пароль</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="******">
+                        <input type="password" class="form-control" id="inputPassword3" th:value="${user.getPassword}">
                     </div>
                 </div>
                 <div class="form-group row">

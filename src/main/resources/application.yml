@@ -5,5 +5,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/bookshelf
   jpa:
+    show-sql: true
+    open-in-view: true
     hibernate:
       ddl-auto: none

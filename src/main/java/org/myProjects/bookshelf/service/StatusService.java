@@ -1,6 +1,6 @@
 package org.myProjects.bookshelf.service;
 
-import org.myProjects.bookshelf.model.Book;
+import org.myProjects.bookshelf.model.Status;
 import org.myProjects.bookshelf.repository.StatusRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ public class StatusService {
         this.repository = repository;
     }
 
-    public List<Book> findAll() {return repository.findAll();}
+    public List<Status> findAll() {return repository.findAll();}
 
 }

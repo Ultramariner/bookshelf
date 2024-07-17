@@ -1,9 +1,10 @@
 package org.myProjects.bookshelf.controller;
 
+import org.myProjects.bookshelf.service.BookService;
 import org.myProjects.bookshelf.service.GenreService;
-import org.myProjects.bookshelf.service.StatusService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,19 +12,20 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(path = "/book")
 public class BookController {
 
+    private final BookService bookService;
     private final GenreService genreService;
-    private final StatusService statusService;
 
-    public BookController(GenreService genreService, StatusService statusService) {
+    public BookController(BookService bookService, GenreService genreService) {
+        this.bookService = bookService;
         this.genreService = genreService;
-        this.statusService = statusService;
     }
 
-    @GetMapping()
-    public ModelAndView get() {
+    @GetMapping("/{shortName}")
+    public ModelAndView get(@PathVariable String shortName) {
         ModelAndView modelAndView = new ModelAndView("book.html");
         modelAndView.addObject("genres", genreService.findAll());
-        modelAndView.addObject("statuses", statusService.findAll());
+        //org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'getName' cannot be found on null
+        modelAndView.addObject("book", bookService.findByShortName(shortName));
         return modelAndView;
     }
 

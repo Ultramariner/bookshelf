@@ -11,30 +11,30 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Bookshelf</a>
+            <a class="navbar-brand" href="http://localhost:8080/main">Bookshelf</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Книги
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Лучшие</a></li>
-                            <li><a class="dropdown-item" href="#">Новинки</a></li>
+                            <li><a class="dropdown-item" href="../search?category=best">Лучшие</a></li>
+                            <li><a class="dropdown-item" href="../search?category=new">Новинки</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <td th:each="genre: ${genres}">
-                                <li><a class="dropdown-item" href="#" th:text="${genre.getName}"></a></li>
+                                <li><a class="dropdown-item" th:href="@{../search(category='genre',value=${genre.getId})}" th:text="${genre.getName}"></a></li>
                             </td>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Моя библиотека</a>
+                        <a class="nav-link" href="http://localhost:8080/profile/user1/library">Моя библиотека</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Профиль</a>
+                        <a class="nav-link" href="http://localhost:8080/profile/user1">Профиль</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -64,10 +64,10 @@
                 </div>
                 <div class="col-9">
                     <ul class="list-group">
-                        <li class="list-group-item">Название</li>
-                        <li class="list-group-item">Автор</li>
-                        <li class="list-group-item">Жанры</li>
-                        <li class="list-group-item">Описание</li>
+                        <li class="list-group-item" th:text="${book.getName}"></li>
+                        <li class="list-group-item" th:text="${book.getAuthor}"></li>
+                        <li class="list-group-item" th:text="${book.getGenresString}"></li>
+                        <li class="list-group-item" th:text="${book.getDescription}"></li>
                     </ul>
                 </div>
             </div>

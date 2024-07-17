@@ -35,6 +35,10 @@ public class Book {
     private String description;
     private String author;
 
+    public String getGenresString() {
+        return genres.toString().replace("[","").replace("]","");
+    }
+
     @Override
     public String toString() {
         return "Book{" +
