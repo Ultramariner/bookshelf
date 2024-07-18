@@ -26,6 +26,7 @@ public class BookController {
         modelAndView.addObject("genres", genreService.findAll());
         //org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'getName' cannot be found on null
         modelAndView.addObject("book", bookService.findByShortName(shortName));
+        modelAndView.addObject("status", bookService.findMyStatusByBookId(bookService.findByShortName(shortName).getId()));
         return modelAndView;
     }
 

@@ -36,6 +36,8 @@ public class BookService {
 
     public String findSourceById(Integer id) {return repository.findSourceById(id);}
 
+    public Integer findMyStatusByBookId(Integer id) {return repository.findMyStatusIdByBookId(id);}
+
     public List<Book> findAllByRating() {return repository.findByOrderByRatingDesc();}
 
     public List<Book> findAllByCreateDate() {return repository.findByOrderByCreateDateDesc();}
