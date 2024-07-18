@@ -25,6 +25,10 @@ public class User {
     @Column(name = "last_login_date")
     private Date lastLoginDate;
 
+    public User(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "User{" +

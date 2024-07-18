@@ -35,6 +35,10 @@ public class Book {
     private String description;
     private String author;
 
+    public Book(Integer id) {
+        this.id = id;
+    }
+
     public String getGenresString() {
         return genres.toString().replace("[","").replace("]","");
     }

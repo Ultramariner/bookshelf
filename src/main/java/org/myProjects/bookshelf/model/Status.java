@@ -18,6 +18,10 @@ public class Status {
     @Column(unique = true)
     private String name;
 
+    public Status(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Status{" +
