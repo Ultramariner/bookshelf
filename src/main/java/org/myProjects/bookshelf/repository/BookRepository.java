@@ -16,6 +16,9 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     Book findByShortName(String shortName);
 
+    @Query("SELECT b.source FROM Book b WHERE b.id = :bookId")
+    String findSourceById(@Param("bookId") Integer id);
+
     //использовать findByOrderByRatingDesc и брать первые 5?
     List<Book> findTop5ByOrderByRatingDesc();
 
@@ -31,4 +34,5 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     //использовать findByUser?
     @Query("SELECT b FROM Book b JOIN FETCH Library l ON b.id = l.libraryLink.book.id JOIN FETCH User u ON l.libraryLink.user.id = u.id WHERE u.name = :userName AND l.status.id = :status")
     List<Book> findByUserAndStatus(@Param("userName") String userName, @Param("status") Integer status);
+
 }

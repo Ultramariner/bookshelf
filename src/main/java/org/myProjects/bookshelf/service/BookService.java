@@ -6,6 +6,7 @@ import org.myProjects.bookshelf.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -32,6 +33,8 @@ public class BookService {
     public List<Book> findByUserAndStatus(String user, Integer status) {return repository.findByUserAndStatus(user, status);}
 
     public List<Book> findAll() {return repository.findAll();}
+
+    public String findSourceById(Integer id) {return repository.findSourceById(id);}
 
     public List<Book> findAllByRating() {return repository.findByOrderByRatingDesc();}
 
