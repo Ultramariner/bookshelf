@@ -54,12 +54,35 @@
                         <div class="card-body">
                             <a th:href="@{http://localhost:8080/reader/{bookId}(bookId=${book.getId})}" class="btn btn-primary">Читать</a>
                         </div>
-                        <select class="form-select">
-                            <option selected>Не в библиотеке</option>
-                            <option value="1">Читаю</option>
-                            <option value="2">Прочту позже</option>
-                            <option value="3">Прочитано</option>
-                        </select>
+                        <form method="post" enctype="multipart/form-data">
+                            <th:block th:switch="${status}">
+                                <select class="form-select" name="status" th:case="'1'">
+                                    <option selected value="1">Читаю</option>
+                                    <option value="2">Прочту позже</option>
+                                    <option value="3">Прочитано</option>
+                                    <option value="">Не в библиотеке</option>
+                                </select>
+                                <select class="form-select" name="status" th:case="'2'">
+                                    <option value="1">Читаю</option>
+                                    <option selected value="2">Прочту позже</option>
+                                    <option value="3">Прочитано</option>
+                                    <option value="">Не в библиотеке</option>
+                                </select>
+                                <select class="form-select" name="status" th:case="'3'">
+                                    <option value="1">Читаю</option>
+                                    <option value="2">Прочту позже</option>
+                                    <option selected value="3">Прочитано</option>
+                                    <option value="">Не в библиотеке</option>
+                                </select>
+                                <select class="form-select" name="status" th:case="null">
+                                    <option value="1">Читаю</option>
+                                    <option value="2">Прочту позже</option>
+                                    <option value="3">Прочитано</option>
+                                    <option selected value="">Не в библиотеке</option>
+                                </select>
+                            </th:block>
+                            <input type="submit" value="Обновить" class="Submit" />
+                        </form>
                     </div>
                 </div>
                 <div class="col-9">

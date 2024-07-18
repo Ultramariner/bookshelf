@@ -19,6 +19,9 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query("SELECT b.source FROM Book b WHERE b.id = :bookId")
     String findSourceById(@Param("bookId") Integer id);
 
+    @Query("SELECT l.status.id FROM Library l JOIN FETCH Book b ON l.libraryLink.book.id = b.id WHERE l.libraryLink.user.name = 'user1' AND b.id = :bookId")
+    Integer findMyStatusIdByBookId(@Param("bookId") Integer id);
+
     //использовать findByOrderByRatingDesc и брать первые 5?
     List<Book> findTop5ByOrderByRatingDesc();
 
