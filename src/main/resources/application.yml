@@ -9,3 +9,5 @@ spring:
     open-in-view: true
     hibernate:
       ddl-auto: none
+server:
+  storage: D:\bookshelf

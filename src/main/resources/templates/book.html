@@ -52,7 +52,7 @@
                     <div class="card text-center">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
-                            <a href="#" class="btn btn-primary">Читать</a>
+                            <a th:href="@{http://localhost:8080/reader/{bookId}(bookId=${book.getId})}" class="btn btn-primary">Читать</a>
                         </div>
                         <select class="form-select">
                             <option selected>Не в библиотеке</option>
