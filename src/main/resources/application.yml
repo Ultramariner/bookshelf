@@ -9,5 +9,7 @@ spring:
     open-in-view: true
     hibernate:
       ddl-auto: none
+  mvc:
+    static-path-pattern:/resources/**
 server:
   storage: D:\bookshelf
