@@ -41,6 +41,7 @@ public class ProfileController {
         ModelAndView modelAndView = new ModelAndView("library.html");
         modelAndView.addObject("genres", genreService.findAll());
         modelAndView.addObject("statuses", statusService.findAll());
+        //todo .addObject("books", (status == null) ? bookService.findByUser(name) : bookService.findByUserAndStatus(name, status));
         if (status == null) {
             modelAndView.addObject("books", bookService.findByUser(name));
         } else {

@@ -9,6 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+//todo посмотреть https://www.youtube.com/watch?v=7kdQTh4oOQM
 @EqualsAndHashCode
 @Entity
 @Table(name = "users")

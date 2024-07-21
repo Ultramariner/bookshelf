@@ -5,7 +5,10 @@ import org.myProjects.bookshelf.service.BookService;
 import org.myProjects.bookshelf.service.GenreService;
 import org.myProjects.bookshelf.service.LibraryService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -22,6 +25,14 @@ public class BookController {
         this.libraryService = libraryService;
     }
 
+    /*todo
+     @GetMapping("/{shortName}")
+     public ModelAndView get(@PathVariable String shortName) {
+         return new ModelAndView("book.html")
+                 .addObject("genres", genreService.findAll())
+                 .addObject("book", bookService.findByShortName(shortName))
+                 .addObject("status", bookService.findMyStatusByBookId(book.getId()));
+     }*/
     @GetMapping("/{shortName}")
     public ModelAndView get(@PathVariable String shortName) {
         ModelAndView modelAndView = new ModelAndView("book.html");
@@ -32,9 +43,19 @@ public class BookController {
         return modelAndView;
     }
 
+
     @PostMapping("/{shortName}")
     public ModelAndView update(@PathVariable String shortName,
                                Integer status) {
+
+       /* todo
+        Book book = bookService.findByShortName(shortName);
+        if (status != null) {
+            libraryService.updateOrInsertBookStatus(new Library(new LibraryLink(new User(1), book), new Status(status)));
+        } else {
+            libraryService.deleteBookFromLibrary(new LibraryLink(new User(1), book));
+        }
+        return get(shortName);*/
         if (status != null) {
             libraryService.updateOrInsertBookStatus(new Library(new LibraryLink(new User(1), new Book(bookService.findByShortName(shortName).getId())), new Status(status)));
         } else {
