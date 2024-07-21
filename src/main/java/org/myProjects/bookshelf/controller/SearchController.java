@@ -22,9 +22,23 @@ public class SearchController {
         this.genreService = genreService;
     }
 
+    /* todo
+     @GetMapping()
+     public ModelAndView get(@RequestParam(value = "category") String category,
+                             @RequestParam(value = "value", required = false) String value) {
+         return new ModelAndView("search.html")
+                 .addObject("genres", genreService.findAll())
+                 .addObject("books", switch (category) {
+                     case "genre" -> bookService.findByGenreId(Integer.parseInt(value));
+                     case "best" -> bookService.findAllByRating();
+                     case "new" -> bookService.findAllByCreateDate();
+                     case "name" -> bookService.findByName(value);
+                     default -> throw new IllegalArgumentException("Invalid category: " + category);
+                 });
+     }*/
     @GetMapping()
-    public ModelAndView get(@RequestParam (value = "category") String category,
-                            @RequestParam (value = "value", required = false) String value) {
+    public ModelAndView get(@RequestParam(value = "category") String category,
+                            @RequestParam(value = "value", required = false) String value) {
         ModelAndView modelAndView = new ModelAndView("search.html");
         modelAndView.addObject("genres", genreService.findAll());
         if (Objects.equals(category, "genre")) {
