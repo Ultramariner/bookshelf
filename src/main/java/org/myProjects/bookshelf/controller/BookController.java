@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+//todo impl (create interfaces)
 @Controller
 @RequestMapping(path = "/book")
 public class BookController {
@@ -42,7 +43,6 @@ public class BookController {
         modelAndView.addObject("status", bookService.findMyStatusByBookId(bookService.findByShortName(shortName).getId()));
         return modelAndView;
     }
-
 
     @PostMapping("/{shortName}")
     public ModelAndView update(@PathVariable String shortName,
