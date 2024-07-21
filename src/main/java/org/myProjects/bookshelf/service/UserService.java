@@ -1,12 +1,16 @@
 package org.myProjects.bookshelf.service;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.myProjects.bookshelf.model.User;
 import org.myProjects.bookshelf.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
+@Slf4j
 @Transactional
 public class UserService {
 
@@ -32,4 +36,13 @@ public class UserService {
         }
     }
 
+    public User findUserByLogin(String userLogin) {
+        Optional<User> userEntityOptional = repository.getUserByLogin(userLogin);
+        if (userEntityOptional.isPresent()) {
+            User user = userEntityOptional.get();
+            return user;
+        } else {
+            throw new RuntimeException("Пользователь не найден");
+        }
+    }
 }

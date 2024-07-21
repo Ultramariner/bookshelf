@@ -26,7 +26,7 @@ public class BookController {
     public ModelAndView get(@PathVariable String shortName) {
         ModelAndView modelAndView = new ModelAndView("book.html");
         modelAndView.addObject("genres", genreService.findAll());
-        //org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'getName' cannot be found on null
+        //todo org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'getName' cannot be found on null
         modelAndView.addObject("book", bookService.findByShortName(shortName));
         modelAndView.addObject("status", bookService.findMyStatusByBookId(bookService.findByShortName(shortName).getId()));
         return modelAndView;
@@ -42,12 +42,5 @@ public class BookController {
         }
         return get(shortName);
     }
-
-//    @PostMapping("/{shortName}")
-//    public ModelAndView update(@PathVariable String shortName,
-//                               @RequestParam(value = "status", required = false)) {
-//
-//        return null;
-//    }
 
 }
