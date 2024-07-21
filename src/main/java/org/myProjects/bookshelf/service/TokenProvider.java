@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class TokenProvider {
@@ -32,10 +35,12 @@ public class TokenProvider {
     public String createToken(Authentication authentication) {
         String userName = authentication.getPrincipal().toString();
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-
+        String collect = authorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
         return Jwts.builder()
                 .setSubject(userName)
-                .claim(AUTH_KEY, authorities)
+                .claim(AUTH_KEY, collect)
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -48,8 +53,12 @@ public class TokenProvider {
                 .getBody();
         String auth = claims.get(AUTH_KEY).toString();
         String userName = claims.getSubject();
-
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userName, null, List.of(() -> auth));
+        String[] split = auth.split(",");
+        List<String> list = Arrays.asList(split);
+        List<SimpleGrantedAuthority> collect = list.stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userName, null, collect);
         return authToken;
     }
 
@@ -58,7 +67,7 @@ public class TokenProvider {
             Jwts.parser()
                     .setSigningKey(secretKey)
                     .build()
-                    .parseClaimsJwt(token);
+                    .parseClaimsJws(token);
             return true;
         } catch (Exception exception) {
             return false;
