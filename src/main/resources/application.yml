@@ -11,5 +11,8 @@ spring:
       ddl-auto: none
   mvc:
     static-path-pattern:/resources/**
+  security:
+    token:
+      key: asfdsdgdsfhfdjfgjghkjhljkjkhgkjghfghgftdfgaqeyuiresvnasfdsdgdsfhfdjfgjghkjhljkjkhgkjghfghgftdfgaqeyuiresvnasfdsdgdsfhfdjfgjghkjhljkjkhgkjghfghgftdfgaqeyuiresvnasfdsdgdsfhfdjfgjghkjhljkjkhgkjghfghgftdfgaqeyuiresvnasfdsdgdsfhfdjfgjghkjhljkjkhgkjghfghgftdfgaqeyuiresvn
 server:
   storage: D:\bookshelf
