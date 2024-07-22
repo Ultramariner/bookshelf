@@ -24,6 +24,7 @@ public class UserService {
         return repository.findByName(name);
     }
 
+    //todo User\UserDetails
     public UserDetails getByUserName (String username) {
         if (username != null && username.equals("user1")) {
             UserDetails userDetails = org.springframework.security.core.userdetails.User.builder().username(username)
@@ -37,9 +38,9 @@ public class UserService {
     }
 
     public User findUserByLogin(String userLogin) {
-        Optional<User> userEntityOptional = repository.getUserByLogin(userLogin);
-        if (userEntityOptional.isPresent()) {
-            User user = userEntityOptional.get();
+        Optional<User> userOptional = repository.getUserByLogin(userLogin);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
             return user;
         } else {
             throw new RuntimeException("Пользователь не найден");

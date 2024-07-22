@@ -36,17 +36,18 @@ public class AppSecurityConfig {
     @Autowired
     private CustomUserDetailsService jwtUserDetailsService;
 
-//                .addFilterBefore(validationFilter, LogoutFilter.class)
-//                .addFilterAfter(generatorFilter, UsernamePasswordAuthenticationFilter.class)
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(PATHS_AVAILABLE_FOR_EVERYONE).permitAll()
-                        .requestMatchers("/profile/**").authenticated())
+                        .requestMatchers("/profile/**").authenticated()
+                        .requestMatchers(PATHS_AVAILABLE_FOR_EVERYONE).permitAll())
+                .addFilterBefore(validationFilter, LogoutFilter.class)
+                .addFilterAfter(generatorFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.NEVER))
+                .formLogin()
+                .and()
                 .build();
     }
 
